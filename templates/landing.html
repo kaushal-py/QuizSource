@@ -2,21 +2,26 @@
 
 {% block content%}
 <!-- Page Content -->
-<div class="container-fluid">
 
-    <!-- Jumbotron Header -->
-    <header class="jumbotron my-4 text-center text-white">
-        <h1 class="display-4">A single source for all quiz questions</h1>
-        <br>
-        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>
-        <br>
-        <a href="/all" class="btn btn-primary btn-lg" style="background-color: #4A33E8;">View Ongoing Quizes</a>
-    </header>
-
-</div>
+<!-- Jumbotron Header -->
+<header class="jumbotron jumbotron-fluid py-10 text-center text-white">
+    <br><br>
+    <h1 class="display-4 strong">A single source for all quiz questions.</h1>
+    <br>
+    <h1>3 Easy Steps - <span
+        class="txt-rotate"
+        data-period="1000"
+        data-rotate='[ "Create", "Share", "Curate" ]'></span> Quiz
+    </h1>
+    <br><br><br>
+    <a href="/all" class="btn btn-primary btn-lg" style="background-color: #135667;">View Ongoing Quizes</a>
+</header>
 
 <div class="container">
 
+        <p class="lead">QuizSource is an online community to crowdsoure quiz questions. Start your quiz topic and invite questions from users across
+                the platform. Review the aggregated compilation and prepare  your own curated list of quiz questions.</p>
+            
     <!-- Page Features -->
     <div class="row text-center">
 
@@ -24,13 +29,13 @@
         <div class="col-lg-3 col-md-6 mb-4">
         <div class="card">
             <img class="card-img-top" 
-            src="https://dummyimage.com/500x325/4A33E8/4A33E8&text=%20" alt="">
+            src="https://dummyimage.com/500x325/135667/135667&text=%20" alt="">
             <div class="card-body">
             <h4 class="card-title">Card title</h4>
             <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
             </div>
             <div class="card-footer">
-            <a href="/all" style="background-color: #4A33E8;" class="btn btn-primary">Find Out More!</a>
+            <a href="/all" style="background-color: #135667;" class="btn btn-primary">Find Out More!</a>
             </div>
         </div>
         </div>
@@ -52,9 +57,69 @@
 
 <style>
     .jumbotron {
-        background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/moving-through-stars-in-space_-1zccenlb__F0000.png");
+        background-image: url("https://hdwallsource.com/img/2017/2/firewatch-widescreen-wallpaper-59148-60932-hd-wallpapers.jpg");
         background-size: cover;
+        height: 100vh;
     }
 </style>
+
+<script>
+var TxtRotate = function(el, toRotate, period) {
+  this.toRotate = toRotate;
+  this.el = el;
+  this.loopNum = 0;
+  this.period = parseInt(period, 10) || 2000;
+  this.txt = '';
+  this.tick();
+  this.isDeleting = false;
+};
+
+TxtRotate.prototype.tick = function() {
+  var i = this.loopNum % this.toRotate.length;
+  var fullTxt = this.toRotate[i];
+
+  if (this.isDeleting) {
+    this.txt = fullTxt.substring(0, this.txt.length - 1);
+  } else {
+    this.txt = fullTxt.substring(0, this.txt.length + 1);
+  }
+
+  this.el.innerHTML = '<span class="wrap">'+this.txt+'</span>';
+
+  var that = this;
+  var delta = 300 - Math.random() * 100;
+
+  if (this.isDeleting) { delta /= 2; }
+
+  if (!this.isDeleting && this.txt === fullTxt) {
+    delta = this.period;
+    this.isDeleting = true;
+  } else if (this.isDeleting && this.txt === '') {
+    this.isDeleting = false;
+    this.loopNum++;
+    delta = 500;
+  }
+
+  setTimeout(function() {
+    that.tick();
+  }, delta);
+};
+
+window.onload = function() {
+  var elements = document.getElementsByClassName('txt-rotate');
+  for (var i=0; i<elements.length; i++) {
+    var toRotate = elements[i].getAttribute('data-rotate');
+    var period = elements[i].getAttribute('data-period');
+    if (toRotate) {
+      new TxtRotate(elements[i], JSON.parse(toRotate), period);
+    }
+  }
+  // INJECT CSS
+  var css = document.createElement("style");
+  css.type = "text/css";
+  css.innerHTML = ".txt-rotate > .wrap { border-right: 0.08em solid #666 }";
+  document.body.appendChild(css);
+};
+</script>
 
 {% endblock %}
