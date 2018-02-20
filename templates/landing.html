@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block content%}
+<!-- Page Content -->
+<div class="container-fluid">
+
+    <!-- Jumbotron Header -->
+    <header class="jumbotron my-4 text-center text-white">
+        <h1 class="display-4">A single source for all quiz questions</h1>
+        <br>
+        <p class="lead">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ipsa, ipsam, eligendi, in quo sunt possimus non incidunt odit vero aliquid similique quaerat nam nobis illo aspernatur vitae fugiat numquam repellat.</p>
+        <br>
+        <a href="/all" class="btn btn-primary btn-lg" style="background-color: #4A33E8;">View Ongoing Quizes</a>
+    </header>
+
+</div>
+
+<div class="container">
+
+    <!-- Page Features -->
+    <div class="row text-center">
+
+        {% for _ in range(4) %}
+        <div class="col-lg-3 col-md-6 mb-4">
+        <div class="card">
+            <img class="card-img-top" 
+            src="https://dummyimage.com/500x325/4A33E8/4A33E8&text=%20" alt="">
+            <div class="card-body">
+            <h4 class="card-title">Card title</h4>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+            </div>
+            <div class="card-footer">
+            <a href="/all" style="background-color: #4A33E8;" class="btn btn-primary">Find Out More!</a>
+            </div>
+        </div>
+        </div>
+        {% endfor %}
+
+    </div>
+    <!-- /.row -->
+
+</div>
+<!-- /.container -->
+
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+<div class="container">
+    <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+</div>
+<!-- /.container -->
+</footer>
+
+<style>
+    .jumbotron {
+        background-image: url("https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/moving-through-stars-in-space_-1zccenlb__F0000.png");
+        background-size: cover;
+    }
+</style>
+
+{% endblock %}

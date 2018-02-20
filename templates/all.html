@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block content%}
+
+{% set colors = ["00cc00", "990000", "003366", "ff8000", "4A33E8"] %}
+
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Page Heading -->
+    <h1 class="my-4">Page Heading
+    <small>Secondary Text</small>
+    </h1>
+
+    <div class="row">
+
+    {% for i in range(10) %}
+    <div class="col-lg-4 col-sm-6 portfolio-item my-2">
+        <div class="card h-100">
+        <a href="#"><img class="card-img-top" 
+            src="https://dummyimage.com/700x200/{{colors|random}}/{{colors|random}}&text=%20" alt=""></a>
+        <div class="card-body">
+            <h4 class="card-title">
+            <a href="#">Quiz Topic {{i}}</a>
+            </h4>
+            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
+        </div>
+        </div>
+    </div>
+    {% endfor %}
+    
+    </div>
+    <!-- /.row -->
+
+    <!-- Pagination -->
+    <ul class="pagination justify-content-center">
+    <li class="page-item">
+        <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
+        </a>
+    </li>
+    <li class="page-item">
+        <a class="page-link" href="#">1</a>
+    </li>
+    <li class="page-item">
+        <a class="page-link" href="#">2</a>
+    </li>
+    <li class="page-item">
+        <a class="page-link" href="#">3</a>
+    </li>
+    <li class="page-item">
+        <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+        </a>
+    </li>
+    </ul>
+
+</div>
+<!-- /.container -->
+
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container">
+    <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+    </div>
+    <!-- /.container -->
+</footer>
+
+
+{% endblock %}

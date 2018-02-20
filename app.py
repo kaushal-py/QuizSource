@@ -1,6 +1,10 @@
 from flask import Flask, render_template
 app = Flask(__name__)
 
+@app.route('/all')
+def display_all():
+    return render_template("all.html")
+
 @app.route('/')
-def hello_world():
-    return render_template("home.html")
+def landing():
+    return render_template("landing.html")
