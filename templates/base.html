@@ -11,8 +11,23 @@
     <title>QuizSource - The source for all quiz questions </title>
   </head>
   <body>
-    
-    <nav class="navbar navbar-light" style="background-color: #135667;">
+      <nav class="navbar navbar-toggleable-md navbar-light" style="background-color: #135667;">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand text-light" href="/"><h2><small>Quiz</small><strong>Source</strong></h2></a>
+
+      
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="text" placeholder="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+      
+    <!-- <nav class="navbar-collapse collpase navbar-light" style="background-color: #135667;">
       <div class="container">
         <a class="navbar-brand text-light" href="/"><h2><small>Quiz</small><strong>Source</strong></h2></a>
 
@@ -21,7 +36,7 @@
           <button class="btn btn-default my-2 my-sm-0" type="submit">Search</button>
         </form>
       </div>
-    </nav>
+    </nav> -->
 
     {% block content %}{% endblock %}
 
