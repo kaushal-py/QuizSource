@@ -9,5 +9,9 @@ def display_all():
 def landing():
     return render_template("landing.html")
 
+@app.route('/startquiz')
+def startquiz():
+    return render_template("startquiz.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
