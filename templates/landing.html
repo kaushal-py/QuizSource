@@ -5,7 +5,7 @@
 
 <!-- Jumbotron Header -->
 <header class="jumbotron jumbotron-fluid py-10 text-center text-white">
-    <br><br>
+    <br>
     <h1 class="display-4 strong">A single source for all quiz questions.</h1>
     <br>
     <h1>3 Easy Steps - <span
@@ -13,10 +13,12 @@
         data-period="1000"
         data-rotate='[ "Create", "Share", "Curate" ]'></span> Quiz
     </h1>
-    <br><br><br>
-    <a href="/startquiz" class="btn btn-lg text-black" style="border-color: #135667;">Start a Quiz</a>
-    <a href="/all" class="btn btn-primary btn-lg" style="background-color: #135667;">View Ongoing Quizes</a>
-</header>
+    <br>
+    <div class="buttons">
+        <a href="/startquiz" class="btn text-black" style="border-color: #135667;">Start a Quiz</a>
+        <a href="/all" class="btn btn-primary" style="background-color: #135667;">View Ongoing Quizes</a>
+    </div>
+    </header>
 
 <div class="container">
 
@@ -61,6 +63,18 @@
         background-image: url("https://hdwallsource.com/img/2017/2/firewatch-widescreen-wallpaper-59148-60932-hd-wallpapers.jpg");
         background-size: cover;
         height: 100vh;
+    }
+
+    @media screen and (max-width: 600px){
+        h1{
+            font-size: 1.5em;
+        }
+    }
+
+    @media screen and (min-width: 600px){
+        .buttons{
+            margin-top: 7%;
+        }
     }
 </style>
 
