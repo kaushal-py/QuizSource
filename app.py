@@ -13,5 +13,9 @@ def landing():
 def startquiz():
     return render_template("startquiz.html")
 
+@app.route('/description')
+def description():
+    return render_template("description.html")
+
 if __name__ == "__main__":
     app.run(debug=True)
