@@ -5,21 +5,21 @@
 <div class="container">
 
     <!-- Portfolio Item Heading -->
-    <h1 class="my-4">Page Heading
-      <small>Secondary Text</small>
+    <h1 class="my-4">Data Structures
+      <!-- <small>Secondary Text</small> -->
     </h1>
 
     <!-- Portfolio Item Row -->
     <div class="row">
 
-      <div class="col-md-8">
+      <!-- <div class="col-md-8">
         <img class="img-fluid" src="http://placehold.it/750x500" alt="">
-      </div>
+      </div> -->
 
-      <div class="col-md-4">
-        <h3 class="my-3">Project Description</h3>
+      <div class="col-sm-6">
+        <h3 class="my-3">Quiz Description</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
-        <h3 class="my-3">Project Details</h3>
+        <h3 class="my-3">Quiz Rules</h3>
         <ul>
           <li>Lorem Ipsum</li>
           <li>Dolor Sit Amet</li>
@@ -31,8 +31,63 @@
     </div>
     <!-- /.row -->
 
+    <!-- Submit a question -->
+
+    <button class="btn btn-primary" id="form-button">Submit a question</button>
+
+    <br><br>
+
+    <form class="ques-form" style="display: none;">
+
+        <div class="form-group">
+          <label for="question">Question</label>
+          <textarea class="form-control" name="question" id="question" cols="30" rows="3"></textarea>
+        </div>
+
+        <div class="row">
+            <div class="form-group col-sm-6">
+              <label for="option-1">Option 1</label>
+              <input type="text" class="form-control" id="option-1" placeholder="Option 1">
+            </div>
+    
+            <div class="form-group col-sm-6">
+              <label for="option-2">Option 2</label>
+              <input type="text" class="form-control" id="option-2" placeholder="Option 2">
+            </div>
+    
+        </div>
+
+        <div class="row">
+
+        <div class="form-group col-sm-6">
+          <label for="option-3">Option 3</label>
+          <input type="text" class="form-control" id="option-3" placeholder="Option 3">
+        </div>
+
+        <div class="form-group col-sm-6">
+          <label for="option-4">Option 4</label>
+          <input type="text" class="form-control" id="option-4" placeholder="Option 4">
+        </div>
+    
+        </div>
+        
+        <div class="form-group">
+
+          <label for="correct-answer">Correct Answer</label>
+          <select class="form-control" id="correct-answer">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+          </select>
+
+        </div>
+          
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+
     <!-- Related Projects Row -->
-    <h3 class="my-4">Related Projects</h3>
+    <h3 class="my-4">Related Topics</h3>
 
     <div class="row">
 
@@ -73,5 +128,14 @@
     </div>
     <!-- /.container -->
   </footer>
+
+  <!-- script -->
+  <script>
+    $(document).ready(function(){
+    $("#form-button").click(function(){
+        $(".ques-form").slideToggle();
+    });
+});
+  </script>
 
 {% endblock %}

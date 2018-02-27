@@ -9,5 +9,10 @@ def display_all():
 def landing():
     return render_template("landing.html")
 
+@app.route('/description')
+def description():
+    return render_template("description.html")
+
+
 if __name__ == "__main__":
     app.run(debug=True)
