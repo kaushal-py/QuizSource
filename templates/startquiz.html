@@ -1,9 +1,17 @@
 {% extends 'base.html' %}
 
 {% block content%}
+
+<style>
+    #full{
+        background: linear-gradient(#135667, white);
+    }
+</style>
+
+<div id="full"> 
 <div class="container">
 
-    <h1 class="my-4">Start a Quiz</h1>
+    <h1 class="text-white py-4">Start a Quiz</h1>
 
     <section class="start-topic">
         <form>
@@ -37,6 +45,7 @@
         </form>
     </section>
 
+</div>
 </div>
 
 {% endblock %}
