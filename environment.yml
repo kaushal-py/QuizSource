@@ -22,10 +22,15 @@ dependencies:
 - pip:
   - click==6.7
   - flask==0.12.2
+  - flask-sqlalchemy==2.3.2
+  - flask-wtf==0.14.2
   - gunicorn==19.7.1
   - itsdangerous==0.24
   - jinja2==2.10
   - markupsafe==1.0
+  - psycopg2==2.7.4
+  - sqlalchemy==1.2.4
   - werkzeug==0.14.1
+  - wtforms==2.1
 prefix: /home/kbstudios/anaconda3/envs/quiz-source
 
