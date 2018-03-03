@@ -1,5 +1,6 @@
+from config import app, db
 from flask import Flask, render_template
-app = Flask(__name__)
+from flask_sqlalchemy import SQLAlchemy
 
 @app.route('/all')
 def display_all():
