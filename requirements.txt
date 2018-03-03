@@ -1,8 +1,13 @@
 certifi==2018.1.18
 click==6.7
 Flask==0.12.2
+Flask-SQLAlchemy==2.3.2
+Flask-WTF==0.14.2
 gunicorn==19.7.1
 itsdangerous==0.24
 Jinja2==2.10
 MarkupSafe==1.0
+psycopg2==2.7.4
+SQLAlchemy==1.2.4
 Werkzeug==0.14.1
+WTForms==2.1
