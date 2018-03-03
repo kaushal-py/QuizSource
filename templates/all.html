@@ -8,17 +8,15 @@
 <div class="container">
 
     <!-- Page Heading -->
-    <h1 class="my-4">Page Heading
-    <small>Secondary Text</small>
+    <h1 class="my-4">All Topics
+    <!-- <small>Secondary Text</small> -->
     </h1>
 
     <div class="row">
 
     {% for i in range(10) %}
-    <div class="col-lg-4 col-sm-6 portfolio-item my-2">
+    <div class="col-md-8 portfolio-item my-2">
         <div class="card h-100">
-        <a href="#"><img class="card-img-top" 
-            src="https://dummyimage.com/700x200/{{colors|random}}/{{colors|random}}&text=%20" alt=""></a>
         <div class="card-body">
             <h4 class="card-title">
             <a href="/description">Quiz Topic {{i}}</a>
