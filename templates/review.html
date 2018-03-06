@@ -39,9 +39,9 @@
                     
                     <br>
 
-                    <span class="btn btn-sm btn-success">Select</span>
-                    <span class="btn btn-sm btn-warning">Mark for Review</span>
-                    <span class="btn btn-sm btn-danger">Reject</span>
+                    <span class="btn btn-sm btn-outline-success" id="btn-success-1">Select</span>
+                    <span class="btn btn-sm btn-outline-warning" id="btn-warning-1">Mark for Review</span>
+                    <span class="btn btn-sm btn-outline-danger" id="btn-danger-1">Reject</span>
                     
                 </div>
             </div>
@@ -86,7 +86,25 @@
 </footer>
 
 <script>
-    
+    $(document).ready(function(){
+        $("#btn-success-1").click(function(){
+            $("#btn-success-1").toggleClass("btn-outline-success").toggleClass("btn-success")
+            $("#btn-warning-1").addClass("btn-outline-warning").removeClass("btn-warning")
+            $("#btn-danger-1").addClass("btn-outline-danger").removeClass("btn-danger")
+        });
+
+         $("#btn-warning-1").click(function(){
+            $("#btn-success-1").addClass("btn-outline-success").removeClass("btn-success")
+            $("#btn-warning-1").toggleClass("btn-outline-warning").toggleClass("btn-warning")
+            $("#btn-danger-1").addClass("btn-outline-danger").removeClass("btn-danger")
+        });
+
+         $("#btn-danger-1").click(function(){
+            $("#btn-success-1").addClass("btn-outline-success").removeClass("btn-success")
+            $("#btn-warning-1").addClass("btn-outline-warning").removeClass("btn-warning")
+            $("#btn-danger-1").toggleClass("btn-outline-danger").toggleClass("btn-danger")
+        });
+    });
 </script>
 
 {% endblock %}
