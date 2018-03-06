@@ -1,0 +1,92 @@
+{% extends 'base.html' %}
+
+{% block content%}
+
+{% set colors = ["00cc00", "990000", "003366", "ff8000", "4A33E8"] %}
+
+<!-- Page Content -->
+<div class="container">
+
+    <!-- Page Heading -->
+    <h1 class="my-4">All Questions
+    <!-- <small>Secondary Text</small> -->
+    </h1>
+
+    <div class="row">
+        <div class="portfolio-item my-2">
+            <div class="card">
+                <div class="card-body">
+
+                    <p class="card-text"><strong>Q.</strong> ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
+
+                    <div class="row">
+                        <div class="col-sm-6"><strong>A.</strong> Option 1</div>
+                        <div class="col-sm-6"><strong>B.</strong> Option 2</div>
+                    </div>
+
+                    <br>
+
+                    <div class="row">
+                        <div class="col"><strong>C.</strong> Option 3</div>
+                        <div class="col"><strong>D.</strong> Option 4</div>
+                    </div>
+
+                    <br>
+
+                    <div class="row">
+                            <div class="col"><strong>Correct Option: </strong> Option 3</div>
+                    </div>
+                    
+                    <br>
+
+                    <span class="btn btn-sm btn-success">Select</span>
+                    <span class="btn btn-sm btn-warning">Mark for Review</span>
+                    <span class="btn btn-sm btn-danger">Reject</span>
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.row -->
+
+    <!-- Pagination -->
+    <ul class="pagination justify-content-center">
+    <li class="page-item">
+        <a class="page-link" href="#" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+        <span class="sr-only">Previous</span>
+        </a>
+    </li>
+    <li class="page-item">
+        <a class="page-link" href="#">1</a>
+    </li>
+    <li class="page-item">
+        <a class="page-link" href="#">2</a>
+    </li>
+    <li class="page-item">
+        <a class="page-link" href="#">3</a>
+    </li>
+    <li class="page-item">
+        <a class="page-link" href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+        <span class="sr-only">Next</span>
+        </a>
+    </li>
+    </ul>
+
+</div>
+<!-- /.container -->
+
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container">
+    <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+    </div>
+    <!-- /.container -->
+</footer>
+
+<script>
+    
+</script>
+
+{% endblock %}
