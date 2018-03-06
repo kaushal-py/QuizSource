@@ -29,8 +29,8 @@
                     <span class="btn btn-sm btn-primary">{{tag}}</span>
                 {% endfor %} 
             </div>
-            <div class="card-footer text-muted">
-                {{topic.dateTime}}
+            <div class="card-footer">
+                <strong>Deadline : </strong>{{topic.dateTime.strftime('%I:%M %p')}}, {{topic.dateTime.strftime('%d %b %Y')}}
             </div>
             </div>
         </div>
