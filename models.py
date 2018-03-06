@@ -11,3 +11,15 @@ class Topic(db.Model):
 
     def __repr__(self):
         return '<Topic %r>' % self.name
+
+class Question(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    question = db.Column(db.Text)
+    option1 = db.Column(db.String(80), nullable=False)
+    option2 = db.Column(db.String(80), nullable=False)
+    option3 = db.Column(db.String(80), nullable=False)
+    option4 = db.Column(db.String(80), nullable=False)
+    correct_answer = db.Column(db.SmallInteger, nullable=False)
+
+    def __repr__(self):
+        return '<Question %r>' % self.question

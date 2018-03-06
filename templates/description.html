@@ -5,7 +5,7 @@
 <div class="container">
 
     <!-- Portfolio Item Heading -->
-    <h1 class="my-4">Data Structures
+    <h1 class="my-4">{{topic.name}}
       <!-- <small>Secondary Text</small> -->
     </h1>
 
@@ -18,7 +18,7 @@
 
       <div class="col-sm-6">
         <h3 class="my-3">Quiz Description</h3>
-        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
+        <p>{{ topic.description }}</p>
         <h3 class="my-3">Quiz Rules</h3>
         <ul>
           <li>Lorem Ipsum</li>
@@ -37,7 +37,7 @@
 
     <br><br>
 
-    <form class="ques-form" style="display: none;">
+    <form method='POST' class="ques-form" style="display: none;">
 
         <div class="form-group">
           <label for="question">Question</label>
@@ -47,12 +47,12 @@
         <div class="row">
             <div class="form-group col-sm-6">
               <label for="option-1">Option 1</label>
-              <input type="text" class="form-control" id="option-1" placeholder="Option 1">
+              <input type="text" class="form-control" name="option-1" placeholder="Option 1">
             </div>
     
             <div class="form-group col-sm-6">
               <label for="option-2">Option 2</label>
-              <input type="text" class="form-control" id="option-2" placeholder="Option 2">
+              <input type="text" class="form-control" name="option-2" placeholder="Option 2">
             </div>
     
         </div>
@@ -61,12 +61,12 @@
 
         <div class="form-group col-sm-6">
           <label for="option-3">Option 3</label>
-          <input type="text" class="form-control" id="option-3" placeholder="Option 3">
+          <input type="text" class="form-control" name="option-3" placeholder="Option 3">
         </div>
 
         <div class="form-group col-sm-6">
           <label for="option-4">Option 4</label>
-          <input type="text" class="form-control" id="option-4" placeholder="Option 4">
+          <input type="text" class="form-control" name="option-4" placeholder="Option 4">
         </div>
     
         </div>
@@ -74,7 +74,7 @@
         <div class="form-group">
 
           <label for="correct-answer">Correct Answer</label>
-          <select class="form-control" id="correct-answer">
+          <select class="form-control" name="correct-answer">
             <option>1</option>
             <option>2</option>
             <option>3</option>

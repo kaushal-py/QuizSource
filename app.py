@@ -2,9 +2,9 @@ from config import app, db
 from flask import Flask, render_template, request, url_for, redirect
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-from models import Topic
+from models import Topic, Question
 
-@app.route('/all')
+@app.route('/topics')
 def display_all():
     topics = Topic.query.all()
     return render_template("all.html", topics=topics)
@@ -31,13 +31,41 @@ def startquiz():
 
     return render_template("startquiz.html")
 
-@app.route('/description')
-def description():
-    return render_template("description.html")
+@app.route('/topics/<int:topic_id>')
+def description(topic_id):
+    if request.method == 'POST':
+        question = request.form.get('question')
+        option1 = request.form.get('option-1')
+        option2 = request.form.get('option-2')
+        option3 = request.form.get('option-3')
+        option4 = request.form.get('option-4')
+        correct_answer = request.form.get('correct-answer')
+
+        question = Question(
+            question = question,
+            option1 = option1,
+            option2 = option2,
+            option3 = option3,
+            option4 = option4,
+            correct_answer = correct_answer
+        )
+
+        db.session.add(question)
+        db.session.commit()
+
+        return redirect(url_for('review'))
+
+    topic = Topic.query.get(topic_id)
+    return render_template("description.html", topic=topic)
 
 @app.route('/drop')
 def drop_all():
     db.drop_all()
+    db.create_all()
+    return redirect(url_for('startquiz'))
+
+@app.route('/create')
+def create_all():
     db.create_all()
     return redirect(url_for('startquiz'))
 
