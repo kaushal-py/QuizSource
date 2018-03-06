@@ -9,6 +9,10 @@ def display_all():
     topics = Topic.query.all()
     return render_template("all.html", topics=topics)
 
+@app.route('/review')
+def review():
+    return render_template("review.html")
+
 @app.route('/')
 def landing():
     return render_template("landing.html")
