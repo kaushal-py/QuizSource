@@ -14,23 +14,23 @@
     <h1 class="text-white py-4">Start a Quiz</h1>
 
     <section class="start-topic">
-        <form>
+        <form method="POST">
           <div class="form-group">
             <label for="topicName">Topic Name</label>
-            <input type="text" class="form-control" id="topicName" placeholder="Enter Topic Name">
+            <input type="text" class="form-control" name="name" placeholder="Enter Topic Name">
           </div>
            <div class="form-group">
             <label for="topicDescription">Topic Description</label>
-            <textarea class="form-control" id="topicDescription" placeholder="Enter Topic Description" rows="3"></textarea>
+            <textarea class="form-control" name="description" placeholder="Enter Topic Description" rows="3"></textarea>
           </div>
           <div class="form-group">
             <label for="topicDeadline">Topic Deadline</label>
             <div class="row">
                 <div class="col-sm-6">
-                    <input class="form-control" type="date" placeholder="Enter Date">
+                    <input class="form-control" name="date" type="date" placeholder="Enter Date">
                 </div>
                 <div class="col-sm-6">
-                    <input class="form-control" placeholder="Enter Time" type="time"/>
+                    <input class="form-control" name="time" placeholder="Enter Time" type="time"/>
                 </div>
             </div>
             
@@ -38,7 +38,7 @@
 
           <div class="form-group">
             <label for="tags">Tags</label>
-            <input type="text" class="form-control" id="tags" placeholder="Tags">
+            <input type="text" class="form-control" name="tags" placeholder="Tags">
           </div>
          
           <button type="submit" class="btn btn-primary">Submit</button>

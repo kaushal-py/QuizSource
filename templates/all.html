@@ -13,20 +13,33 @@
     </h1>
 
     <div class="row">
-
-    {% for i in range(10) %}
-    <div class="col-md-8 portfolio-item my-2">
-        <div class="card h-100">
-        <div class="card-body">
-            <h4 class="card-title">
-            <a href="/description">Quiz Topic {{i}}</a>
-            </h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Amet numquam aspernatur eum quasi sapiente nesciunt? Voluptatibus sit, repellat sequi itaque deserunt, dolores in, nesciunt, illum tempora ex quae? Nihil, dolorem!</p>
-        </div>
-        </div>
-    </div>
-    {% endfor %}
     
+    {% if topics|length > 0 %}
+        {% for topic in topics %}
+        <div class="col-md-8 portfolio-item my-2">
+            <div class="card h-100">
+            <div class="card-body">
+                <h4 class="card-title">
+                <a href="/description">{{topic.name}}</a>
+                </h4>
+                <p class="card-text">{{topic.description|truncate}}</p>
+                
+                {% set tags = topic.tags.split(", ") %}
+                {% for tag in tags %}
+                    <span class="btn btn-sm btn-primary">{{tag}}</span>
+                {% endfor %} 
+            </div>
+            <div class="card-footer text-muted">
+                {{topic.dateTime}}
+            </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% else %}
+        <div class="alert alert-warning" role="alert">
+            No Quiz topics found!
+        </div>
+    {% endif %}
     </div>
     <!-- /.row -->
 
