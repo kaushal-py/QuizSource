@@ -9,9 +9,9 @@ def display_all():
     topics = Topic.query.all()
     return render_template("all.html", topics=topics)
 
-@app.route('/review')
-def review():
-    questions = Question.query.all()
+@app.route('/review/<int:topic_id>')
+def review(topic_id):
+    questions = Question.query.filter_by(topic_id=topic_id)
     return render_template("review.html", questions=questions)
 
 @app.route('/')
@@ -48,6 +48,7 @@ def description(topic_id):
 
         question = Question(
             name = name,
+            topic_id = topic_id,
             option1 = option1,
             option2 = option2,
             option3 = option3,
@@ -58,20 +59,20 @@ def description(topic_id):
         db.session.add(question)
         db.session.commit()
 
-        return redirect(url_for('review'))
+        return redirect(url_for('review', topic_id=topic_id))
 
     topic = Topic.query.get(topic_id)
     return render_template("description.html", topic=topic)
 
-@app.route('/drop')
+@app.route('/create')
 def drop_all():
     db.drop_all()
     db.create_all()
     return redirect(url_for('startquiz'))
 
-@app.route('/create')
+@app.route('/drop')
 def create_all():
-    db.create_all()
+    db.drop_all()
     return redirect(url_for('startquiz'))
 
 if __name__ == "__main__":

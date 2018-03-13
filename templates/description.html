@@ -19,6 +19,7 @@
       <div class="col-sm-6">
         <h3 class="my-3">Quiz Description</h3>
         <p>{{ topic.description }}</p>
+        <a href="/review/{{topic.id}}">View questions</a>        
         <h3 class="my-3">Quiz Rules</h3>
         <ul>
           <li>Lorem Ipsum</li>
@@ -34,6 +35,8 @@
     <!-- Submit a question -->
 
     <button class="btn btn-primary" id="form-button">Submit a question</button>
+
+    <input type="hidden" name="id" value="{{topic.id}}">
 
     <br><br>
 

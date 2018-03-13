@@ -14,6 +14,7 @@ class Topic(db.Model):
 
 class Question(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    topic_id = db.Column('user_id', db.Integer, db.ForeignKey("topic.id"), nullable=False)
     name = db.Column(db.Text)
     option1 = db.Column(db.String(80), nullable=False)
     option2 = db.Column(db.String(80), nullable=False)
