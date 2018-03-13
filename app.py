@@ -11,7 +11,8 @@ def display_all():
 
 @app.route('/review')
 def review():
-    return render_template("review.html")
+    questions = Question.query.all()
+    return render_template("review.html", questions=questions)
 
 @app.route('/')
 def landing():
@@ -35,10 +36,10 @@ def startquiz():
 
     return render_template("startquiz.html")
 
-@app.route('/topics/<int:topic_id>')
+@app.route('/topics/<int:topic_id>' , methods = ['GET', 'POST'])
 def description(topic_id):
     if request.method == 'POST':
-        question = request.form.get('question')
+        name = request.form.get('question')
         option1 = request.form.get('option-1')
         option2 = request.form.get('option-2')
         option3 = request.form.get('option-3')
@@ -46,7 +47,7 @@ def description(topic_id):
         correct_answer = request.form.get('correct-answer')
 
         question = Question(
-            question = question,
+            name = name,
             option1 = option1,
             option2 = option2,
             option3 = option3,

@@ -12,29 +12,32 @@
     <!-- <small>Secondary Text</small> -->
     </h1>
 
+    {% for question in questions %}
+    {% set options = [question.option1, question.option2, question.option3, question.option4] %}
+    
     <div class="row">
-        <div class="portfolio-item my-2">
+        <div class="col-sm-12 portfolio-item my-2">
             <div class="card">
                 <div class="card-body">
 
-                    <p class="card-text"><strong>Q.</strong> ipsum dolor sit amet, consectetur adipiscing elit. Nam viverra euismod odio, gravida pellentesque urna varius vitae. Sed dui lorem, adipiscing in adipiscing et, interdum nec metus. Mauris ultricies, justo eu convallis placerat, felis enim.</p>
+                    <p class="card-text"><strong>Q.</strong>{{ question.name }}</p>
 
                     <div class="row">
-                        <div class="col-sm-6"><strong>A.</strong> Option 1</div>
-                        <div class="col-sm-6"><strong>B.</strong> Option 2</div>
+                        <div class="col-sm-6"><strong>A. </strong>{{ question.option1 }}</div>
+                        <div class="col-sm-6"><strong>B. </strong>{{ question.option2 }}</div>
                     </div>
 
                     <br>
 
                     <div class="row">
-                        <div class="col"><strong>C.</strong> Option 3</div>
-                        <div class="col"><strong>D.</strong> Option 4</div>
+                        <div class="col"><strong>C. </strong>{{ question.option3 }}</div>
+                        <div class="col"><strong>D. </strong>{{ question.option4 }}</div>
                     </div>
 
                     <br>
 
                     <div class="row">
-                            <div class="col"><strong>Correct Option: </strong> Option 3</div>
+                        <div class="col"><strong>Correct Option: </strong>{{ options[question.correct_answer - 1] }}</div>
                     </div>
                     
                     <br>
@@ -47,6 +50,7 @@
             </div>
         </div>
     </div>
+    {% endfor %}
     <!-- /.row -->
 
     <!-- Pagination -->
