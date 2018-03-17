@@ -18,51 +18,110 @@
         <a href="/startquiz" class="btn text-black" style="border-color: #135667;">Start a Quiz</a>
         <a href="/topics" class="btn btn-primary" style="background-color: #135667;">View Ongoing Quizes</a>
     </div>
-    </header>
+</header>
+
+<!-- Steps to use the app -->
+
+<div class="container-fluid text-center" style="background: #ebeff2;">
+    <br><br>
+    <h3 class="display-5 strong" style="padding: 2rem 0%;">A Single Source For All Quiz Questions.</h3>
+    <div class="row text-center" style="padding: 0 2em;">
+        <div class="col-sm">
+            <img src="../static/img/easy-step-1.svg" alt="Create quiz" style="width: 80%; height: 20vh;">
+            <br> <br>
+            <h5 style="text-transform: uppercase; color: #6b35c4">Create a quiz</h5>
+            <br>
+            <p class="lead" style="font-size: 1.1rem;">Getting the perfect quiz for your topic is as easy is starting one. Fill up a short form about your quiz and it is live!
+            </p>
+        </div>
+        <div class="col-sm">
+            <img src="../static/img/easy-step-2.svg" alt="Share quiz" style="width: 80%; height: 20vh;">
+            <br> <br>
+            <h5 style="text-transform: uppercase; color: #39a810">Share your quiz</h5>
+            <br>
+            <p class="lead" style="font-size: 1.1rem;">Your quiz is now broadcast as a live topic to the entire community.
+            </p>
+        </div>
+        <div class="col-sm">
+            <img src="../static/img/easy-step-3.svg" alt="Share quiz" style="width: 80%; height: 20vh;">
+            <br><br>
+            <h5 style="text-transform: uppercase; color: #1c66dd">Curate your questions</h5>
+            <br>
+            <p class="lead" style="font-size: 1.1rem;">Pick and choose your own best set of questions.
+            </p>
+        </div>
+    </div>
+    <br><br>
+</div>
+
+<!-- About the site -->
+
+<div class="container-fluid" style="padding: 5em; background: #37536c;; margin-bottom: 10vh">
+
+    <p class="p-5 blockquote" style="border: 1px solid rgba(162,180,197,.6); color: white">QuizSource is an online community to crowdsource quiz questions. Start your quiz topic and invite questions from users across
+            the platform. Review the aggregated compilation and prepare  your own curated list of quiz questions.</p>
+</div>
+
+<!-- Featured quizzes -->
 
 <div class="container">
-
-        <p class="p-5 blockquote">QuizSource is an online community to crowdsoure quiz questions. Start your quiz topic and invite questions from users across
-                the platform. Review the aggregated compilation and prepare  your own curated list of quiz questions.</p>
-            
     <!-- Page Features -->
     <div class="row text-center">
-
-        {% for _ in range(4) %}
+    {% if topics|length > 0 %}
+        {% for topic in topics[:4] %}
         <div class="col-lg-3 col-md-6 mb-4">
         <div class="card">
             <img class="card-img-top" 
             src="https://dummyimage.com/500x325/135667/135667&text=%20" alt="">
             <div class="card-body">
-            <h4 class="card-title">Card title</h4>
-            <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sapiente esse necessitatibus neque.</p>
+            <h4 class="card-title">{{topic.name}}</h4>
+            <p class="card-text lead" style="font-size: 1em;">{{topic.description|truncate}}</p>
             </div>
             <div class="card-footer">
-            <a href="/all" style="background-color: #135667;" class="btn btn-primary">Find Out More!</a>
+            <a href="/topics" style="background-color: #135667;" class="btn btn-primary">Find Out More!</a>
             </div>
         </div>
         </div>
         {% endfor %}
-
+    {% endif %}
     </div>
-    <!-- /.row -->
-
+        <!-- /.row -->
 </div>
-<!-- /.container -->
-
+            
 <!-- Footer -->
-<footer class="py-5 bg-dark">
-<div class="container">
-    <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+<div class="pre-footer container-fluid" style="background: #373f46;">
+    <div class="row text-center" style="padding: 1.5rem;">
+        <div class="col-sm-3">
+            <a class="navbar-brand text-light" href="/"><h2><small>Quiz</small><strong>Source</strong></h2></a>
+        </div>
+        <div class="col-sm-6"></div>
+        <div class="col-sm-3">
+            <button class="btn btn-primary" type="submit">Sign Up Now</button>
+        </div>
+    </div>
 </div>
-<!-- /.container -->
-</footer>
+
+<div class="footer container-fluid" style="background-color: #434a51;">
+    <div class="row text-center footer-nav" style="padding: 1.5rem;">
+        <div class="col-sm-2"></div>
+        <div class="col-sm-8">
+            <h6 style="color: white; text-transform: uppercase;">Our mission</h6>
+            <p style="color: #bcbcbc">It isn't easy making quizzes. All those hours of scouring a hundred websites to scrape the questions you may need. And then having to collate them all together to proceed on the arduous task of deleting the ones you may not need. What if you happen to change your mind?! Rest easy. We have taken stock of the situation and solved this problem for you. Our intuitive interface and crowdsourced solution makes creating quizzes fast and fun! So hop in and create yours too! 
+            </p>
+        </div>
+        <div class="col-sm-2"></div>
+    </div>
+    <div class="row text-center footer-legal" style="padding: 2rem;">
+        <p class="m-1 text-center" style="color: #adb3b9">Copyright &copy; Your Website 2018</p>
+    </div>
+</div>
 
 <style>
     .jumbotron {
         background-image: url("https://hdwallsource.com/img/2017/2/firewatch-widescreen-wallpaper-59148-60932-hd-wallpapers.jpg");
         background-size: cover;
         height: 100vh;
+        margin-bottom: 0;
     }
 
     @media screen and (max-width: 600px){
