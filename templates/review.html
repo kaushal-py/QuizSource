@@ -42,9 +42,9 @@
                     
                     <br>
 
-                    <span class="btn btn-sm btn-outline-success" id="btn-success-1">Select</span>
-                    <span class="btn btn-sm btn-outline-warning" id="btn-warning-1">Mark for Review</span>
-                    <span class="btn btn-sm btn-outline-danger" id="btn-danger-1">Reject</span>
+                    <span class="btn btn-sm btn-outline-success" id="btn-success-{{loop.index}}">Select</span>
+                    <span class="btn btn-sm btn-outline-warning" id="btn-warning-{{loop.index}}">Mark for Review</span>
+                    <span class="btn btn-sm btn-outline-danger" id="btn-danger-{{loop.index}}">Reject</span>
                     
                 </div>
             </div>
@@ -91,23 +91,32 @@
 
 <script>
     $(document).ready(function(){
-        $("#btn-success-1").click(function(){
-            $("#btn-success-1").toggleClass("btn-outline-success").toggleClass("btn-success")
-            $("#btn-warning-1").addClass("btn-outline-warning").removeClass("btn-warning")
-            $("#btn-danger-1").addClass("btn-outline-danger").removeClass("btn-danger")
+    
+        var socket = io.connect('http://' + document.domain + ':' + location.port);
+        
+        {% for question in questions %}
+        $("#btn-success-{{loop.index}}").click(function(){
+            console.log("I got called");
+            socket.emit('update_question', {id: {{question.id}}, status: 0 });
+            $("#btn-success-{{loop.index}}").toggleClass("btn-outline-success").toggleClass("btn-success")
+            $("#btn-warning-{{loop.index}}").addClass("btn-outline-warning").removeClass("btn-warning")
+            $("#btn-danger-{{loop.index}}").addClass("btn-outline-danger").removeClass("btn-danger")
         });
 
-         $("#btn-warning-1").click(function(){
-            $("#btn-success-1").addClass("btn-outline-success").removeClass("btn-success")
-            $("#btn-warning-1").toggleClass("btn-outline-warning").toggleClass("btn-warning")
-            $("#btn-danger-1").addClass("btn-outline-danger").removeClass("btn-danger")
+         $("#btn-warning-{{loop.index}}").click(function(){
+            socket.emit('update_question', {id: {{question.id}}, status: 1 });            
+            $("#btn-success-{{loop.index}}").addClass("btn-outline-success").removeClass("btn-success")
+            $("#btn-warning-{{loop.index}}").toggleClass("btn-outline-warning").toggleClass("btn-warning")
+            $("#btn-danger-{{loop.index}}").addClass("btn-outline-danger").removeClass("btn-danger")
         });
 
-         $("#btn-danger-1").click(function(){
-            $("#btn-success-1").addClass("btn-outline-success").removeClass("btn-success")
-            $("#btn-warning-1").addClass("btn-outline-warning").removeClass("btn-warning")
-            $("#btn-danger-1").toggleClass("btn-outline-danger").toggleClass("btn-danger")
+         $("#btn-danger-{{loop.index}}").click(function(){
+            socket.emit('update_question', {id: {{question.id}}, status: 2 });            
+            $("#btn-success-{{loop.index}}").addClass("btn-outline-success").removeClass("btn-success")
+            $("#btn-warning-{{loop.index}}").addClass("btn-outline-warning").removeClass("btn-warning")
+            $("#btn-danger-{{loop.index}}").toggleClass("btn-outline-danger").toggleClass("btn-danger")
         });
+        {% endfor %}
     });
 </script>
 

@@ -21,6 +21,7 @@ class Question(db.Model):
     option3 = db.Column(db.String(80), nullable=False)
     option4 = db.Column(db.String(80), nullable=False)
     correct_answer = db.Column(db.SmallInteger, nullable=False)
+    status = db.Column(db.SmallInteger, default=-1)
 
     def __repr__(self):
         return '<Question %r>' % self.question

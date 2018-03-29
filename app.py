@@ -1,8 +1,11 @@
-from config import app, db
 from flask import Flask, render_template, request, url_for, redirect
+from flask_socketio import SocketIO
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from models import Topic, Question
+from config import app, db
+
+socketio = SocketIO(app)
 
 @app.route('/topics')
 def display_all():
@@ -65,6 +68,10 @@ def description(topic_id):
     topic = Topic.query.get(topic_id)
     return render_template("description.html", topic=topic)
 
+@socketio.on('update_question')
+def update_question_status(json):
+    print('received json: {0}'.format(str(json)))
+
 @app.route('/create')
 def drop_all():
     db.drop_all()
@@ -77,7 +84,7 @@ def create_all():
     return redirect(url_for('startquiz'))
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    socketio.run(app)
 
 # @app.route('/contact', methods = ['GET', 'POST'])
 # def contact():
