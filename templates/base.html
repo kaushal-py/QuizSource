@@ -28,8 +28,8 @@
           </form>
   
           <div class="nav-buttons">
-            <button class="btn btn-primary mr-1">Sign Up</button>
-            <button class="btn btn-secondary">Log In</button>
+            <a href="/register" class="btn btn-primary mr-1">Sign Up</a>
+            <a href="/register" class="btn btn-secondary">Login</a>
           </div>
     
         </div>
@@ -64,14 +64,48 @@
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script
-  src="https://code.jquery.com/jquery-3.3.1.min.js"
-  integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-  crossorigin="anonymous"></script>
+      src="https://code.jquery.com/jquery-3.3.1.min.js"
+      integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+      crossorigin="anonymous">
+    </script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
-    {% block content %}{% endblock %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js">
+    </script>
 
+    {% block content %}
+    {% endblock %}
+
+    <!-- Footer -->
+    <div class="pre-footer container-fluid" style="background: #373f46;">
+      <div class="row text-center p-3">
+        <div class="col-sm-3">
+          <a class="navbar-brand text-light" href="/"><h2><small>Quiz</small><strong>Source</strong></h2></a>
+        </div>
+        <div class="col-sm-6"></div>
+        <div class="col-sm-3">
+          <button class="btn btn-primary" type="submit">Sign Up Now</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer container-fluid" style="background-color: #434a51;">
+      <div class="row text-center footer-nav p-4">
+        <div class="col-sm-2"></div>
+          <div class="col-sm-8">
+                <h6 class="m-auto pb-2" style="color: white; text-transform: uppercase; border-bottom: #00c7b7 2px solid; width: 20%;">Our mission</h6>
+                <p class="pt-3" style="color: #bcbcbc">It isn't easy making quizzes. All those hours of scouring a hundred websites to scrape the questions you may need. And then having to collate them all together to proceed on the arduous task of deleting the ones you may not need. What if you happen to change your mind?! Rest easy. We have taken stock of the situation and solved this problem for you. Our intuitive interface and crowdsourced solution makes creating quizzes fast and fun! So hop in and create yours too! 
+                </p>
+            </div>
+            <div class="col-sm-2"></div>
+        </div>
+        <div class="row text-center footer-legal pb-4">
+            <div class="col-sm-6 text-center">
+                <p class="m-1 text-center" style="color: #adb3b9">&copy; 2018 QuizSource</p>
+            </div>
+            <div class="col-sm-6"></div>
+        </div>
+    </div>
     
   </body>
 </html>
