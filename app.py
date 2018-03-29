@@ -16,7 +16,7 @@ def display_all():
 @app.route('/review/<int:topic_id>')
 def review(topic_id):
     questions = Question.query.filter_by(topic_id=topic_id)
-    return render_template("review.html", questions=questions)
+    return render_template("review.html", questions=questions, topic_id=topic_id)
 
 @app.route('/')
 def landing():
@@ -76,6 +76,18 @@ def update_question_status(question_data):
     db.session.add(question)
     db.session.commit()
     emit('question_updated')
+
+@app.route('/quiz/<int:topic_id>')
+def gen_quiz(topic_id):
+    
+    hosted_by = request.args.get('hosted_by')
+    duration = request.args.get('duration')
+    max_marks = request.args.get('max_marks')
+
+    topic = Topic.query.get(topic_id)
+    questions = Question.query.filter_by(topic_id=topic_id, status=0)
+    return render_template("quiz.html", questions=questions, topic=topic,
+                        hosted_by=hosted_by, duration=duration, max_marks=max_marks )
 
 @app.route('/create')
 def drop_all():
