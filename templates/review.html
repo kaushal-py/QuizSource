@@ -92,7 +92,7 @@
 <script>
     $(document).ready(function(){
     
-        var socket = io.connect('http://' + document.domain + ':' + location.port, {
+        var socket = io.connect(document.domain + ':' + location.port, {
             'match origin protocol': true,
         });
         // io.set('match origin protocol', true);        
