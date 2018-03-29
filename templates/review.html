@@ -20,7 +20,7 @@
             <div class="card">
                 <div class="card-body">
 
-                    <p class="card-text"><strong>Q.</strong>{{ question.name }} {{ question.status }}</p>
+                    <p class="card-text"><strong>Q.</strong>{{ question.name }}</p>
 
                     <div class="row">
                         <div class="col-sm-6"><strong>A. </strong>{{ question.option1 }}</div>
@@ -41,11 +41,24 @@
                     </div>
                     
                     <br>
+                    {% if (question.status == 0) %}
+                        <span class="btn btn-sm btn-success" id="btn-success-{{loop.index}}">Select</span>
+                    {% else %}                  
+                        <span class="btn btn-sm btn-outline-success" id="btn-success-{{loop.index}}">Select</span>
+                    {% endif %}
 
-                    <span class="btn btn-sm btn-outline-success" id="btn-success-{{loop.index}}">Select</span>
-                    <span class="btn btn-sm btn-outline-warning" id="btn-warning-{{loop.index}}">Mark for Review</span>
-                    <span class="btn btn-sm btn-outline-danger" id="btn-danger-{{loop.index}}">Reject</span>
-                    
+                    {% if (question.status == 1) %}
+                        <span class="btn btn-sm btn-warning" id="btn-warning-{{loop.index}}">Mark for review</span>
+                    {% else %}                  
+                        <span class="btn btn-sm btn-outline-warning" id="btn-warning-{{loop.index}}">Mark for review</span>
+                    {% endif %}
+
+                    {% if (question.status == 2) %}
+                        <span class="btn btn-sm btn-danger" id="btn-danger-{{loop.index}}">Reject</span>
+                    {% else %}                  
+                        <span class="btn btn-sm btn-outline-danger" id="btn-danger-{{loop.index}}">Reject</span>
+                    {% endif %}
+
                 </div>
             </div>
         </div>
