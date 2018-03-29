@@ -11,20 +11,28 @@
     <title>QuizSource - The source for all quiz questions </title>
   </head>
   <body>
-      <nav class="navbar navbar-toggleable-md navbar-light" style="background-color: #135667;">
-        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+
+        <a class="navbar-brand text-light mr-5" href="/"><h2><small>Quiz</small><strong>Source</strong></h2></a>
+        
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
-        <a class="navbar-brand text-light" href="/"><h2><small>Quiz</small><strong>Source</strong></h2></a>
 
-      
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
-          <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          <form class="form-inline nav-form w-75">
+            <input class="form-control mr-sm-1 w-75" style="margin-right: 0.8rem;" type="text" placeholder="Search for questions, people and topics">
+            <button class="btn btn-outline-success my-2 my-sm-0 ml-sm-2" type="submit">Search</button>
           </form>
+  
+          <div class="nav-buttons">
+            <button class="btn btn-primary mr-1">Sign Up</button>
+            <button class="btn btn-secondary">Log In</button>
+          </div>
+    
         </div>
+
       </nav>
       
     <!-- <nav class="navbar-collapse collpase navbar-light" style="background-color: #135667;">
@@ -37,6 +45,20 @@
         </form>
       </div>
     </nav> -->
+
+    <style>
+
+      @media screen and (max-width: 768px) {
+
+        .nav-form {
+          width: 100%;
+        }
+
+        .nav-form input {
+          width: 70%;
+        }
+      }
+    </style>
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

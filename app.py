@@ -16,7 +16,8 @@ def review(topic_id):
 
 @app.route('/')
 def landing():
-    return render_template("landing.html")
+    topics = Topic.query.all()
+    return render_template("landing.html", topics=topics)
 
 @app.route('/startquiz', methods = ['GET', 'POST'])
 def startquiz():
