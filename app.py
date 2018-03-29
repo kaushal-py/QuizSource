@@ -69,8 +69,11 @@ def description(topic_id):
     return render_template("description.html", topic=topic)
 
 @socketio.on('update_question')
-def update_question_status(json):
-    print('received json: {0}'.format(str(json)))
+def update_question_status(question_data):
+    question = Question.query.get(question_data['id'])
+    question.status = question_data['status']
+    db.session.add(question)
+    db.session.commit()
 
 @app.route('/create')
 def drop_all():
