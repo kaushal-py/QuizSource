@@ -30,8 +30,8 @@
                     <p class="card-text"><strong>Q.</strong>{{ question.name }}</p>
 
                     <div class="row">
-                        <div class="col-sm-6"><strong>A. </strong>{{ question.option1 }}</div>
-                        <div class="col-sm-6"><strong>B. </strong>{{ question.option2 }}</div>
+                        <div class="col"><strong>A. </strong>{{ question.option1 }}</div>
+                        <div class="col"><strong>B. </strong>{{ question.option2 }}</div>
                     </div>
 
                     <br>
@@ -98,8 +98,66 @@
     </li>
     </ul>
 
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+        Generate Quiz
+    </button>
+
 </div>
 <!-- /.container -->
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle">Additional information</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+        <form method="GET" action="/quiz/{{topic_id}}">
+        <div class="modal-body">
+            <div class="form-group row">
+                <label for="hosted_by" class="col-sm-2 col-form-label">Hosted by</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="hosted_by" placeholder="Institution name (Ex. VESIT)">
+                </div>
+            </div>
+        </div>
+        <div class="modal-body">
+            <div class="form-group row">
+                <label for="duration" class="col-sm-2 col-form-label">Duration of test</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control" name="duration" placeholder="Time in hours (Ex. 3)">
+                </div>
+            </div>
+        </div>
+        <div class="modal-body">
+            <div class="form-group row">
+                <label for="max_marks" class="col-sm-2 col-form-label">Maximum marks</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control" name="max_marks" placeholder="Ex. 80">
+                </div>
+            </div>
+        </div>
+        
+        <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+            <input type="submit" value="Generate" class="btn btn-primary">
+        </div>
+        </form>
+        </div>
+    </div>
+</div>
+
+<!-- Footer -->
+<footer class="py-5 bg-dark">
+    <div class="container">
+    <p class="m-0 text-center text-white">Copyright &copy; Your Website 2018</p>
+    </div>
+    <!-- /.container -->
+</footer>
 
 <script>
     $(document).ready(function(){
