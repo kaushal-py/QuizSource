@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, url_for, redirect
 from flask_socketio import SocketIO
+from flask_socketio import emit
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
 from models import Topic, Question
@@ -74,6 +75,7 @@ def update_question_status(question_data):
     question.status = question_data['status']
     db.session.add(question)
     db.session.commit()
+    emit('question_updated')
 
 @app.route('/create')
 def drop_all():

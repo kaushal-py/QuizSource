@@ -5,6 +5,13 @@
 {% set colors = ["00cc00", "990000", "003366", "ff8000", "4A33E8"] %}
 
 <!-- Page Content -->
+
+<div style="position: fixed; top:20px; left: 50%;
+            -webkit-transform: translateX(-50%);
+            transform: translateX(-50%);
+            z-index: 1000;" id="alertbox">
+</div>
+
 <div class="container">
 
     <!-- Page Heading -->
@@ -109,6 +116,10 @@
             'match origin protocol': true,
         });
         // io.set('match origin protocol', true);        
+
+        socket.on('question_updated', function() {
+            $("#alertbox").html("<div class='alert alert-success alert-dismissible fade show animated slideInDown' role='alert'> Change successful! <button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div>");
+        });
 
         {% for question in questions %}
         $("#btn-success-{{loop.index}}").click(function(){
