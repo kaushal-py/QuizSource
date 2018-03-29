@@ -13,6 +13,10 @@ def display_all():
     topics = Topic.query.all()
     return render_template("all.html", topics=topics)
 
+@app.route('/register')
+def register():
+    return render_template("register.html")
+
 @app.route('/review/<int:topic_id>')
 def review(topic_id):
     questions = Question.query.filter_by(topic_id=topic_id)
@@ -89,6 +93,7 @@ def create_all():
     return redirect(url_for('startquiz'))
 
 if __name__ == "__main__":
+    app.run(debug = True, port = 5000)
     socketio.run(app)
 
 # @app.route('/contact', methods = ['GET', 'POST'])
