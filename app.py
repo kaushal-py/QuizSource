@@ -13,9 +13,9 @@ def display_all():
     topics = Topic.query.all()
     return render_template("all.html", topics=topics)
 
-@app.route('/register', methods = ['GET', 'POST'])
+@app.route('/register' , methods = ['GET', 'POST'])
 def register():
-    return render_template("register.html")
+    return  render_template("register.html")
 
 @app.route('/review/<int:topic_id>')
 def review(topic_id):
