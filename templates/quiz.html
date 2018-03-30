@@ -8,7 +8,17 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 
-    <title>QuizSource - The source for all quiz questions </title>
+    <title>Quiz on {{topic.name}} - QuizSource</title>
+
+    <style>
+        @media print
+        {    
+            .no-print, .no-print *
+            {
+                display: none !important;
+            }
+        }
+    </style>
   </head>
   <body>
 
@@ -21,13 +31,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
-
 <br><br>
 <div class="container">
 
-    <h4 class="text-center">{{hosted_by}}</h4>
+    <input type="submit" value="Print Quiz" class="btn btn-success no-print" onClick="window.print()">
+
+    <h5 class="text-center">{{hosted_by}}</h5>
     <!-- Page Heading -->
-    <h2 class="my-4 text-center">{{topic.name}}</h2>
+    <h4 class="text-center">{{topic.name}}</h4>
 
     <div class="row text-center">
         <div class="col">
@@ -37,36 +48,47 @@
             <strong>Maximum marks : </strong>{{max_marks}}
         </div>
     </div>
-
+    <br>
+    <div class="form-group row text-left">
+        <label for="duration" class="col-sm-1 col-form-label">Name:</label>
+        <div class="col-sm-4">
+            <input type="text" class="form-control">
+        </div>
+        <label for="duration" class="col-sm-1 col-form-label">Class:</label>
+        <div class="col-sm-2">
+            <input type="text" class="form-control">
+        </div>
+        <label for="duration" class="col-sm-2 col-form-label">Roll No:</label>
+        <div class="col-sm-1">
+            <input type="text" class="form-control">
+        </div>
+    </div>
     <hr>
 
     {% for question in questions %}
     {% set options = [question.option1, question.option2, question.option3, question.option4] %}
     
     <div class="row">
-        <div class="col-sm-12 portfolio-item my-2">
-            <div class="card">
-                <div class="card-body">
+        <!-- <div class="card">
+            <div class="card-body"> -->
 
-                    <p class="card-text"><strong>Q. {{ loop.index }} </strong>{{ question.name }}</p>
-
-                    <div class="row">
-                        <div class="col"><strong>A. </strong>{{ question.option1 }}</div>
-                        <div class="col"><strong>B. </strong>{{ question.option2 }}</div>
-                    </div>
-
-                    <br>
-
-                    <div class="row">
-                        <div class="col"><strong>C. </strong>{{ question.option3 }}</div>
-                        <div class="col"><strong>D. </strong>{{ question.option4 }}</div>
-                    </div>
-
-                    <br>
-                </div>
-            </div>
-        </div>
+        <p><strong>Q. {{ loop.index }} </strong>{{ question.name }}</p>
     </div>
+    <div class="row">
+        <div class="col"><strong>A. </strong>{{ question.option1 }}</div>
+        <div class="col"><strong>B. </strong>{{ question.option2 }}</div>
+    </div>
+
+    <br>
+
+    <div class="row">
+        <div class="col"><strong>C. </strong>{{ question.option3 }}</div>
+        <div class="col"><strong>D. </strong>{{ question.option4 }}</div>
+    </div>
+
+            <!-- </div>
+        </div> -->
+    <hr>
     {% endfor %}
     <!-- /.row -->
 

@@ -13,7 +13,7 @@ def display_all():
     topics = Topic.query.all()
     return render_template("all.html", topics=topics)
 
-@app.route('/register')
+@app.route('/register', methods = ['GET', 'POST'])
 def register():
     return render_template("register.html")
 
