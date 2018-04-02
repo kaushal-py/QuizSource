@@ -42,7 +42,7 @@ def register():
                 return redirect(url_for('/register'))
             login_user(user, remember=form.remember_me.data)
             return redirect(url_for('/landing'))
-        return render_template('login.html', title='Sign In', form=form)
+        return render_template('register.html', title='Sign In', form=form)
 
 @app.route('/review/<int:topic_id>')
 def review(topic_id):

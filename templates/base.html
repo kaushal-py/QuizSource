@@ -11,8 +11,8 @@
 
     <title>QuizSource - The source for all quiz questions </title>
   </head>
-  <body>
-      <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+  <body style="background-color: #fafafa">
+      <nav class="navbar navbar-expand-md" style="background-color: #135667;">
 
         <a class="navbar-brand text-light mr-5" href="/"><h2><small>Quiz</small><strong>Source</strong></h2></a>
         
@@ -24,7 +24,7 @@
 
           <form class="form-inline nav-form w-75">
             <input class="form-control mr-sm-1 w-75" style="margin-right: 0.8rem;" type="text" placeholder="Search for questions, people and topics">
-            <button class="btn btn-outline-success my-2 my-sm-0 ml-sm-2" type="submit">Search</button>
+            <button class="btn btn-secondary my-2 my-sm-0 ml-sm-2" type="submit">Search</button>
           </form>
   
           <div class="nav-buttons">
@@ -72,16 +72,21 @@
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
       crossorigin="anonymous">
     </script>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.4/socket.io.js"></script>
+    <link href="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.rawgit.com/michalsnik/aos/2.1.1/dist/aos.js"></script>
+    <script>
+      AOS.init();
     </script>
 
     {% block content %}
     {% endblock %}
 
     <!-- Footer -->
-    <div class="pre-footer container-fluid" style="background: #373f46;">
+    <div class="pre-footer container-fluid" style="background: #135667;">
       <div class="row text-center p-3">
         <div class="col-sm-3">
           <a class="navbar-brand text-light" href="/"><h2><small>Quiz</small><strong>Source</strong></h2></a>
@@ -93,7 +98,7 @@
       </div>
     </div>
 
-    <div class="footer container-fluid" style="background-color: #434a51;">
+    <div class="footer container-fluid" style="background-color: #156d83;">
       <div class="row text-center footer-nav p-4">
         <div class="col-sm-2"></div>
           <div class="col-sm-8">
