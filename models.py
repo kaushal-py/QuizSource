@@ -2,7 +2,6 @@ from config import app, db
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import UserMixin
-from flask import login
 
 class Topic(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -26,7 +25,7 @@ class Question(db.Model):
     status = db.Column(db.SmallInteger, default=-1)
 
     def __repr__(self):
-        return '<Question %r>' % self.question
+        return '<Question %r>' % self.name
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -34,11 +33,11 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(320), unique=True, nullable=False)
     password = db.Column(db.String(80), nullable=False)
 
-    def set_password(self, passwd):
-        self.password = passwd
+    def set_password(self, password):
+        self.password = password
 
-    def check_password(self, passwd):
-        return self.password == passwd
+    def check_password(self, password):
+        return self.password == password
 
     def __repr__(self):
-        return '<User %r>' % self.user
+        return '<User %r>' % self.username

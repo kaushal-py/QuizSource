@@ -17,7 +17,7 @@
 
     <br>
     
-    <form id="login-form" action="" method="POST">
+    <form id="login-form" action="/register" method="POST">
         <div class="form-group">
             <input type="text" name="username" id="username" tabindex="1" class="form-control" placeholder="Username" value="">
         </div>
@@ -29,7 +29,7 @@
             <label for="remember"> Remember Me</label>
         </div>
         <div class="form-group">
-            <button type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-primary">Log In</button>
+            <button type="submit" name="submit" value="login" id="login-submit" tabindex="4" class="form-control btn btn-primary">Log In</button>
         </div>
         <div class="form-group text-center">
             <a href="" tabindex="5" class="forgot-password">Forgot Password?</a>
@@ -50,7 +50,7 @@
             <input type="password" name="confirm-password" id="confirm-password" tabindex="2" class="form-control" placeholder="Confirm Password">
         </div>
         <div class="form-group">     
-            <button type="submit" name="register-submit" id="register-submit" tabindex="4" class="form-control btn btn-primary">Sign Up</button> 
+            <button type="submit" name="submit" value="register" id="register-submit" tabindex="4" class="form-control btn btn-primary">Sign Up</button> 
         </div>
     </form>
 
@@ -60,20 +60,20 @@
 
 $(function() {
 
-$('#login-form-link').click(function(e) {
-    $("#login-form").delay(100).fadeIn(100);
-     $("#register-form").fadeOut(100);
-    $('#register-form-link').removeClass('active');
-    $(this).addClass('active');
-    e.preventDefault();
-});
-$('#register-form-link').click(function(e) {
-    $("#register-form").delay(100).fadeIn(100);
-     $("#login-form").fadeOut(100);
-    $('#login-form-link').removeClass('active');
-    $(this).addClass('active');
-    e.preventDefault();
-});
+    $('#login-form-link').click(function(e) {
+        $("#login-form").delay(100).fadeIn(100);
+        $("#register-form").fadeOut(100);
+        $('#register-form-link').removeClass('active');
+        $(this).addClass('active');
+        e.preventDefault();
+    });
+    $('#register-form-link').click(function(e) {
+        $("#register-form").delay(100).fadeIn(100);
+        $("#login-form").fadeOut(100);
+        $('#login-form-link').removeClass('active');
+        $(this).addClass('active');
+        e.preventDefault();
+    });
 
 });
 

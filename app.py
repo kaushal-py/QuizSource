@@ -1,4 +1,5 @@
-from flask import Flask, render_template, request, url_for, redirect
+import flask
+from flask import Flask, render_template, request, url_for, redirect, flash
 from flask_socketio import SocketIO
 from flask_socketio import emit
 from flask_sqlalchemy import SQLAlchemy
@@ -6,23 +7,19 @@ from datetime import datetime
 from models import Topic, Question, User
 from config import app, db
 from flask_login import LoginManager
-from flask_login import current_user, login_user
+from flask_login import current_user, login_user, logout_user
+from flask_login import login_required
+from functions import calcSimilarity
 
 login_manager = LoginManager()
+login_manager.init_app(app)
 socketio = SocketIO(app)
 
-u = User.query.filter_by(email=form.name.data)first()
-if u is not None:
-    login_user(u)
+login_manager.login_view = "register"
 
-@login.user_loader
-    def load_user(id):
-        return User.query.get(int(id))
-
-
-def create_app(config=None):
-    login_manager.init_app(app)
-    return app
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(user_id)
 
 @app.route('/topics')
 def display_all():
@@ -31,20 +28,44 @@ def display_all():
 
 @app.route('/register', methods = ['GET', 'POST'])
 def register():
-    def login():
-        if current_user.isauthenticated:
-            return redirect(url_for('landing.html'))
-        form = LoginForm()
-        if form.validate_on_submit():
-            user = User.query.filter_by(username=form.username.data).first()
-            if user is None or not user.check_password(form.password.data):
+     
+    if request.method == 'POST':
+
+        if request.form.get('submit') == "login":
+            user = User.query.filter_by(username=request.form.get('username')).first()
+            if user is None or not user.check_password(request.form.get('password')):
                 flash('Invalid username or password')
-                return redirect(url_for('/register'))
-            login_user(user, remember=form.remember_me.data)
-            return redirect(url_for('/landing'))
-        return render_template('register.html', title='Sign In', form=form)
+                return redirect(url_for('register'))
+            
+            login_user(user, remember=request.form.get('remember'))
+
+        elif request.form.get('submit') == "register":
+            name = request.form.get('username')
+            email = request.form.get('email')
+            password = request.form.get('password')
+
+            user = User(username=name, email=email, password=password)
+            db.session.add(user)
+            db.session.commit()
+
+        next = request.args.get('next')
+        print(next)
+        # is_safe_url should check if the url is safe for redirects.
+        # See http://flask.pocoo.org/snippets/62/ for an example.
+        # if not is_safe_url(next):
+        #     return flask.abort(400)
+
+        return redirect(next or url_for('display_all'))
+
+    return render_template('register.html')
+
+@app.route('/logout')
+def logout():
+    logout_user()
+    return redirect(url_for('landing'))
 
 @app.route('/review/<int:topic_id>')
+@login_required
 def review(topic_id):
     questions = Question.query.filter_by(topic_id=topic_id)
     return render_template("review.html", questions=questions, topic_id=topic_id)
@@ -55,6 +76,7 @@ def landing():
     return render_template("landing.html", topics=topics)
 
 @app.route('/startquiz', methods = ['GET', 'POST'])
+@login_required
 def startquiz():
     if request.method == 'POST':
         name = request.form.get('name')
@@ -81,6 +103,13 @@ def description(topic_id):
         option3 = request.form.get('option-3')
         option4 = request.form.get('option-4')
         correct_answer = request.form.get('correct-answer')
+
+        questions = Question.query.filter_by(topic_id=topic_id)
+        for question in questions:
+            sim = calcSimilarity(name, question.name)
+            print(sim)
+            if(sim >= 0.5):
+                return "Duplicate question"
 
         question = Question(
             name = name,
@@ -109,6 +138,7 @@ def update_question_status(question_data):
     emit('question_updated')
 
 @app.route('/quiz/<int:topic_id>')
+@login_required
 def gen_quiz(topic_id):
     
     hosted_by = request.args.get('hosted_by')
@@ -134,16 +164,3 @@ def create_all():
 if __name__ == "__main__":
     app.run(debug = True, port = 5000)
     socketio.run(app)
-
-# @app.route('/contact', methods = ['GET', 'POST'])
-# def contact():
-#    form = ContactForm()
-   
-#    if request.method == 'POST':
-#       if form.validate() == False:
-#          flash('All fields are required.')
-#          return render_template('contact.html', form = form)
-#       else:
-#          return render_template('success.html')
-#       elif request.method == 'GET':
-#          return render_template('contact.html', form = form)
