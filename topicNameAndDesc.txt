@@ -1,0 +1,23 @@
+Operating Systems
+
+An operating system (OS) is system software that manages computer hardware and software resources and provides common services for computer programs. Time-sharing operating systems schedule tasks for efficient use of the system and may also include accounting software for cost allocation of processor time, mass storage, printing, and other resources.
+
+Data Structures
+
+Data structures are a particular way of organizing and storing data in a computer so that it can be accessed and modified efficiently. More precisely, a data structure is a collection of data values, the relationships among them, and the functions or operations that can be applied to the data.
+
+Database Management Systems
+
+A database-management system (DBMS) is a computer-software application that interacts with end-users, other applications, and the database itself to capture and analyze data. A general-purpose DBMS allows the definition, creation, querying, update, and administration of databases.
+
+Algorithms
+
+An algorithm is an effective method that can be expressed within a finite amount of space and time and in a well-defined formal language for calculating a function. Starting from an initial state and initial input (perhaps empty), the instructions describe a computation that, when executed, proceeds through a finite number of well-defined successive states, eventually producing "output" and terminating at a final ending state. The transition from one state to the next is not necessarily deterministic; some algorithms, known as randomized algorithms,incorporate random input.
+
+GRE Verbal
+
+The Verbal section of the GRE tests you on your vocabulary, contextual understanding of the English language and analytical reasoning. The section is divided into text completion, sentence equivalence and reading comprehension questions.
+
+GRE Quant
+
+The Quant section of the GRE tests you on your mathematical aptitude, problem solving ability and numerical skill. The section is divided into algebra, data interpretation and geometry questions among others.
