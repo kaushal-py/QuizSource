@@ -28,8 +28,12 @@
           </form>
   
           <div class="nav-buttons">
-            <a href="/register" class="btn btn-primary mr-1">Sign Up</a>
-            <a href="/register" class="btn btn-secondary">Login</a>
+            {% if current_user.is_authenticated %}
+              <h3>Hi, {{ current_user.username }}</h3>
+            {% else %}
+              <a href="/register" class="btn btn-primary mr-1">Sign Up</a>
+              <a href="/register" class="btn btn-secondary">Login</a>
+            {% endif %}
           </div>
     
         </div>

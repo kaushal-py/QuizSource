@@ -3,19 +3,46 @@ from flask_socketio import SocketIO
 from flask_socketio import emit
 from flask_sqlalchemy import SQLAlchemy
 from datetime import datetime
-from models import Topic, Question
+from models import Topic, Question, User
 from config import app, db
+from flask_login import LoginManager
+from flask_login import current_user, login_user
 
+login_manager = LoginManager()
 socketio = SocketIO(app)
+
+u = User.query.filter_by(email=form.name.data)first()
+if u is not None:
+    login_user(u)
+
+@login.user_loader
+    def load_user(id):
+        return User.query.get(int(id))
+
+
+def create_app(config=None):
+    login_manager.init_app(app)
+    return app
 
 @app.route('/topics')
 def display_all():
     topics = Topic.query.all()
     return render_template("all.html", topics=topics)
 
-@app.route('/register')
+@app.route('/register', methods = ['GET', 'POST'])
 def register():
-    return render_template("register.html")
+    def login():
+        if current_user.isauthenticated:
+            return redirect(url_for('landing.html'))
+        form = LoginForm()
+        if form.validate_on_submit():
+            user = User.query.filter_by(username=form.username.data).first()
+            if user is None or not user.check_password(form.password.data):
+                flash('Invalid username or password')
+                return redirect(url_for('/register'))
+            login_user(user, remember=form.remember_me.data)
+            return redirect(url_for('/landing'))
+        return render_template('login.html', title='Sign In', form=form)
 
 @app.route('/review/<int:topic_id>')
 def review(topic_id):
