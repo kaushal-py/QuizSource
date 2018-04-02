@@ -8,6 +8,6 @@ def calcSimilarity(query, question):
     return pairwise_similarity[0, 1]
 
 # res1 = calcSimilarity("Which elements of a website can a crawler not see?", "What can't a crawler see on a website?")
-res2 = calcSimilarity("Would you like an apple or an orange?", "You want to eat an apple or an orange right now?")
+# res2 = calcSimilarity("Would you like an apple or an orange?", "You want to eat an apple or an orange right now?")
 
-print(res2)
+# print(res2)
