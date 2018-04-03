@@ -142,7 +142,7 @@ def description(topic_id):
         db.session.add(question)
         db.session.commit()
 
-        return redirect(url_for('review', topic_id=topic_id))
+        return redirect(url_for('description', topic_id=topic_id))
 
     topic = Topic.query.get(topic_id)
     return render_template("description.html", topic=topic)
