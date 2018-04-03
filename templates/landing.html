@@ -71,8 +71,8 @@
             <img class="card-img-top" 
             src="https://dummyimage.com/500x325/135667/135667&text=%20" alt="">
             <div class="card-body">
-            <h4 class="card-title">{{topic.name}}</h4>
-            <p class="card-text lead" style="font-size: 1em;">{{topic.description|truncate}}</p>
+            <h4 class="card-title">{{topic.name|truncate(20)}}</h4>
+            <p class="card-text lead" style="font-size: 1em;">{{topic.description|truncate(50)}}</p>
             </div>
             <div class="card-footer">
             <a href="/topics" style="background-color: #135667;" class="btn btn-primary">Find Out More!</a>
