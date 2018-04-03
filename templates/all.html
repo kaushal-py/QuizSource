@@ -7,10 +7,26 @@
 <!-- Page Content -->
 <div class="container">
 
+    {% if all %}
     <!-- Page Heading -->
     <h1 class="my-4">All Topics
     <!-- <small>Secondary Text</small> -->
     </h1>
+    {% endif %}
+
+    {% if not all %}
+    <h1 class="my-4">My Topics
+    <!-- <small>Secondary Text</small> -->
+    </h1>
+    <div class="jumbotron">
+        <p class="lead">Create a quiz today</p>
+        <hr class="my-4">
+        <p>Why the wait when you can create your own quiz and start crowd sourcing questions in just one click!</p>
+        <p class="lead">
+          <a class="btn btn-primary btn-lg" href="/startquiz" role="button">Start a Quiz</a>
+        </p>
+    </div>
+    {% endif %}
 
     <div class="row">
     
@@ -24,10 +40,14 @@
                 </h4>
                 <p class="card-text">{{topic.description|truncate}}</p>
                 
+                 
                 {% set tags = topic.tags.split(", ") %}
                 {% for tag in tags %}
                     <span class="btn btn-sm btn-primary">{{tag}}</span>
                 {% endfor %}
+                {% if not all %}
+                <a href="/review/{{topic.id}}">View questions</a>
+                {% endif %}
             </div>
             <div class="card-footer">
                 <strong>Deadline : </strong>{{topic.dateTime.strftime('%I:%M %p')}}, {{topic.dateTime.strftime('%d %b %Y')}}
@@ -37,7 +57,11 @@
         {% endfor %}
     {% else %}
         <div class="alert alert-warning" role="alert">
+            {% if all %}
             No Quiz topics found!
+            {% else %}
+            You don't have any quizzes, Create one!
+            {% endif %}
         </div>
     {% endif %}
     </div>

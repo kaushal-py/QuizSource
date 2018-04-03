@@ -24,11 +24,17 @@ def load_user(user_id):
 @app.route('/topics')
 def display_all():
     topics = Topic.query.all()
-    return render_template("all.html", topics=topics)
+    return render_template("all.html", topics=topics, all=True)
+
+@app.route('/my-topics')
+def display_my():
+    topics = Topic.query.filter_by(user_id=current_user.id).all()
+    return render_template("all.html", topics=topics, all=False)
 
 @app.route('/register', methods = ['GET', 'POST'])
 def register():
-     
+    
+    global next
     if request.method == 'POST':
 
         if request.form.get('submit') == "login":
@@ -47,16 +53,19 @@ def register():
             user = User(username=name, email=email, password=password)
             db.session.add(user)
             db.session.commit()
+            login_user(user, remember=request.form.get('remember'))            
 
-        next = request.args.get('next')
-        print(next)
         # is_safe_url should check if the url is safe for redirects.
         # See http://flask.pocoo.org/snippets/62/ for an example.
         # if not is_safe_url(next):
         #     return flask.abort(400)
 
         return redirect(next or url_for('display_all'))
-
+    
+    else:
+        next = request.args.get('next')
+    
+    print(next)
     return render_template('register.html')
 
 @app.route('/logout')
@@ -67,7 +76,7 @@ def logout():
 @app.route('/review/<int:topic_id>')
 @login_required
 def review(topic_id):
-    questions = Question.query.filter_by(topic_id=topic_id)
+    questions = Question.query.filter_by(topic_id=topic_id).all()
     return render_template("review.html", questions=questions, topic_id=topic_id)
 
 @app.route('/')
@@ -80,13 +89,14 @@ def landing():
 def startquiz():
     if request.method == 'POST':
         name = request.form.get('name')
+        user_id = current_user.id
         description = request.form.get('description')
         date = request.form.get('date')
         time = request.form.get('time')
         dateTime = datetime.strptime(date+time, "%Y-%m-%d%H:%M")
         tags = request.form.get('tags')
 
-        topic = Topic(name=name, description=description, dateTime=dateTime, tags=tags)
+        topic = Topic(name=name, user_id=user_id, description=description, dateTime=dateTime, tags=tags)
         db.session.add(topic)
         db.session.commit()
 

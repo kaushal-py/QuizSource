@@ -5,6 +5,7 @@ from flask_login import UserMixin
 
 class Topic(db.Model):
     id = db.Column(db.Integer, primary_key=True)
+    user_id = db.Column('user_id', db.Integer, db.ForeignKey("user.id"), nullable=False)
     name = db.Column(db.String(80), unique=True, nullable=False)
     description = db.Column(db.Text)
     dateTime = db.Column(db.DateTime)
@@ -15,7 +16,7 @@ class Topic(db.Model):
 
 class Question(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    topic_id = db.Column('user_id', db.Integer, db.ForeignKey("topic.id"), nullable=False)
+    topic_id = db.Column('topic_id', db.Integer, db.ForeignKey("topic.id"), nullable=False)
     name = db.Column(db.Text)
     option1 = db.Column(db.String(80), nullable=False)
     option2 = db.Column(db.String(80), nullable=False)

@@ -19,64 +19,70 @@
     <!-- <small>Secondary Text</small> -->
     </h1>
 
-    {% for question in questions %}
-    {% set options = [question.option1, question.option2, question.option3, question.option4] %}
-    
-    <div class="row w-75">
-        <div data-aos="fade-up" class="col-sm-12 portfolio-item my-2">
-            <div class="card" style="box-shadow: 0px 0px 20px #eee;">
-                    <!-- <div class="card-header text-white" style="background-color: #135667">
-                            <p><strong>Q.</strong>{{ question.name }}</p>
-                    </div> -->
-                <div class="card-body">
+    {% if questions|length > 0 %}
+        {% for question in questions %}
+        {% set options = [question.option1, question.option2, question.option3, question.option4] %}
+        
+        <div class="row w-75">
+            <div data-aos="fade-up" class="col-sm-12 portfolio-item my-2">
+                <div class="card" style="box-shadow: 0px 0px 20px #eee;">
+                        <!-- <div class="card-header text-white" style="background-color: #135667">
+                                <p><strong>Q.</strong>{{ question.name }}</p>
+                        </div> -->
+                    <div class="card-body">
 
-                    <p class="card-text"><strong>Q.</strong>{{ question.name }}</p>
-                    
-                    <hr>
-                    <div class="row">
-                        <div class="col"><strong>A. </strong>{{ question.option1 }}</div>
-                        <div class="col"><strong>B. </strong>{{ question.option2 }}</div>
+                        <p class="card-text"><strong>Q.</strong>{{ question.name }}</p>
+                        
+                        <hr>
+                        <div class="row">
+                            <div class="col"><strong>A. </strong>{{ question.option1 }}</div>
+                            <div class="col"><strong>B. </strong>{{ question.option2 }}</div>
+                        </div>
+
+                        <br>
+
+                        <div class="row">
+                            <div class="col"><strong>C. </strong>{{ question.option3 }}</div>
+                            <div class="col"><strong>D. </strong>{{ question.option4 }}</div>
+                        </div>
+
+                        <br>
+
+                        <div class="row">
+                            <div class="col"><strong>Correct Option: </strong>{{ options[question.correct_answer - 1] }}</div>
+                        </div>
+                    </div>  
+                    <div class="card-footer text-muted">
+                        {% if (question.status == 0) %}
+                            <span class="btn btn-sm btn-success" id="btn-success-{{loop.index}}">Select</span>
+                        {% else %}                  
+                            <span class="btn btn-sm btn-outline-success" id="btn-success-{{loop.index}}">Select</span>
+                        {% endif %}
+
+                        {% if (question.status == 1) %}
+                            <span class="btn btn-sm btn-warning" id="btn-warning-{{loop.index}}">Mark for review</span>
+                        {% else %}                  
+                            <span class="btn btn-sm btn-outline-warning" id="btn-warning-{{loop.index}}">Mark for review</span>
+                        {% endif %}
+
+                        {% if (question.status == 2) %}
+                            <span class="btn btn-sm btn-danger" id="btn-danger-{{loop.index}}">Reject</span>
+                        {% else %}                  
+                            <span class="btn btn-sm btn-outline-danger" id="btn-danger-{{loop.index}}">Reject</span>
+                        {% endif %}
+
                     </div>
-
-                    <br>
-
-                    <div class="row">
-                        <div class="col"><strong>C. </strong>{{ question.option3 }}</div>
-                        <div class="col"><strong>D. </strong>{{ question.option4 }}</div>
-                    </div>
-
-                    <br>
-
-                    <div class="row">
-                        <div class="col"><strong>Correct Option: </strong>{{ options[question.correct_answer - 1] }}</div>
-                    </div>
-                </div>  
-                <div class="card-footer text-muted">
-                    {% if (question.status == 0) %}
-                        <span class="btn btn-sm btn-success" id="btn-success-{{loop.index}}">Select</span>
-                    {% else %}                  
-                        <span class="btn btn-sm btn-outline-success" id="btn-success-{{loop.index}}">Select</span>
-                    {% endif %}
-
-                    {% if (question.status == 1) %}
-                        <span class="btn btn-sm btn-warning" id="btn-warning-{{loop.index}}">Mark for review</span>
-                    {% else %}                  
-                        <span class="btn btn-sm btn-outline-warning" id="btn-warning-{{loop.index}}">Mark for review</span>
-                    {% endif %}
-
-                    {% if (question.status == 2) %}
-                        <span class="btn btn-sm btn-danger" id="btn-danger-{{loop.index}}">Reject</span>
-                    {% else %}                  
-                        <span class="btn btn-sm btn-outline-danger" id="btn-danger-{{loop.index}}">Reject</span>
-                    {% endif %}
-
                 </div>
             </div>
         </div>
-    </div>
-    {% endfor %}
-    <!-- /.row -->
-
+        {% endfor %}
+        <!-- /.row -->
+    
+    {% else %}
+        <div class="alert alert-warning" role="alert">
+            No questions submitted for your quiz! Please share your quiz to accept questions.
+        </div>
+    {% endif %}
     <!-- Pagination -->
     <ul class="pagination justify-content-center">
     <li class="page-item">
