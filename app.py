@@ -126,7 +126,8 @@ def description(topic_id):
             sim = calcSimilarity(name, question.name)
             print(sim)
             if(sim >= 0.5):
-                return "Duplicate question"
+                flash("A similar question has already been submitted! <br>Try submitting a different question :)")
+                return redirect(url_for('description', topic_id=topic_id))
 
         question = Question(
             name = name,

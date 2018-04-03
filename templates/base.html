@@ -11,7 +11,7 @@
 
     <title>QuizSource - The source for all quiz questions </title>
   </head>
-  <body style="background-color: #fafafa">
+  <body style="background-color: #eee">
 
       <div style="position: fixed; top:20px; left: 50%;
       -webkit-transform: translateX(-50%);
@@ -21,7 +21,9 @@
           {% if messages %}
             {% for message in messages %}
             <div class='alert alert-danger alert-dismissible fade show animated slideInDown' role='alert'> 
-              {{message}}
+              {% autoescape false %}
+                {{message}}
+              {% endautoescape %}
               <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
                 <span aria-hidden='true'>&times;</span>
               </button>
@@ -64,8 +66,8 @@
             </li>  
             </ul>          
             {% else %}
-              <a href="/register" class="btn btn-primary mr-1">Sign Up</a>
-              <a href="/register" class="btn btn-secondary">Login</a>
+              <a href="/register" style="background-color: #58bdd1; color: white" class="btn mr-1">Sign Up</a>
+              <a href="/register" style="background-color: #58bdd1; color: white" class="btn">Login</a>
             </div>
             {% endif %}
           
