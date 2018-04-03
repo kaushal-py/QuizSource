@@ -10,6 +10,7 @@ from flask_login import LoginManager
 from flask_login import current_user, login_user, logout_user
 from flask_login import login_required
 from functions import calcSimilarity
+from sqlalchemy import or_
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -20,6 +21,12 @@ login_manager.login_view = "register"
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(user_id)
+
+@app.route('/search')
+def search_topics():
+    q = request.args.get('q')
+    topics = Topic.query.filter(or_(Topic.name.like('%'+q+'%'), Topic.tags.like('%'+q+'%'), Topic.description.like('%'+q+'%'))).all()
+    return render_template("all.html", topics=topics, all=True)
 
 @app.route('/topics')
 def display_all():
