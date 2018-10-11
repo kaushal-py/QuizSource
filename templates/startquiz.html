@@ -3,16 +3,26 @@
 {% block content%}
 
 <style>
-    #full{
-        background: linear-gradient(#135667, white);
+    body {
+        background-image: url("https://hdwallsource.com/img/2017/2/firewatch-widescreen-wallpaper-59148-60932-hd-wallpapers.jpg");
+        background-size: cover;
     }
+
+    #full{
+        height: 80vh;
+    }
+    
+    #startform{
+        background-color: white;
+    }
+
 </style>
 
 <div id="full"> 
-<div class="container">
+<div id="startform" class="container card mt-5 p-5 border-dark">
 
-    <h1 class="text-white py-4">Start a Quiz
-
+    <h1 class="py-4">
+        Start a Quiz <img data-aos="flip-left" src="../static/img/rocket.svg" alt="Share quiz" style="width: 50px">
     </h1>
 
     <section class="start-topic">
