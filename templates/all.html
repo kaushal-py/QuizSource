@@ -9,7 +9,8 @@
 
     {% if all %}
     <!-- Page Heading -->
-    <h1 class="my-4">All Topics
+    <h1 class="my-4">All Topics <img data-aos="flip-left" src="../static/img/bookshelf.svg" alt="Share quiz" style="width: 60px">
+
     <!-- <small>Secondary Text</small> -->
     </h1>
     {% endif %}
@@ -18,8 +19,9 @@
     <br><br>
       <nav class="navbar navbar-expand-md">
         <div class="jumbotron text-center col-md-8 mx-auto" style="background-color:#135667">
-        <p class="lead text-white">Create a quiz today</p>
-        <hr class="my-4">
+        <p><img data-aos="flip-left" src="../static/img/pot.svg" alt="Share quiz" style="width: 90px"></p>
+        <h3 class="lead text-white">Create a quiz today</h3>
+        <hr class="my-2 text-white">
         <p class="text-white">Why the wait when you can create your own quiz and start crowd sourcing questions in just one click!</p>
         <p class="lead">
           <a class="btn btn-primary btn-lg" href="/startquiz" role="button">Start a Quiz</a>
@@ -27,7 +29,7 @@
         </div>
         </nav>
     <hr class="my-4">
-    <h1 class="my-4">My Topics
+    <h1 class="my-4">My Topics <img data-aos="flip-left" src="../static/img/open-book.svg" alt="Share quiz" style="width: 60px">
     <!-- <small>Secondary Text</small> -->
     </h1>
     {% endif %}
@@ -40,21 +42,23 @@
             <div class="card h-100">
             <div class="card-body">
                 <h4 class="card-title">
-                <a href="/topics/{{topic.id}}">{{topic.name}}</a>
+                <a href="/topics/{{topic.id}}">{{topic.name}} </a>
                 </h4>
                 <p class="card-text">{{topic.description|truncate}}</p>
-                
                  
                 {% set tags = topic.tags.split(", ") %}
                 {% for tag in tags %}
-                    <span class="btn btn-sm btn-primary">{{tag}}</span>
+                    <span class="btn btn-sm btn-primary">#{{tag}}</span>
                 {% endfor %}
                 {% if not all %}
-                <a href="/review/{{topic.id}}">View questions</a>
+                <hr>
+                <p class="lead">
+                    <img data-aos="flip-left" src="../static/img/preview.svg" alt="Share quiz" style="width: 30px"> <a href="/review/{{topic.id}}">View submitted questions</a>
+                </p>
                 {% endif %}
             </div>
             <div class="card-footer">
-                <strong>Deadline : </strong>{{topic.dateTime.strftime('%I:%M %p')}}, {{topic.dateTime.strftime('%d %b %Y')}}
+                <strong><i class="fas fa-stopwatch"></i> Deadline : </strong>{{topic.dateTime.strftime('%I:%M %p')}}, {{topic.dateTime.strftime('%d %b %Y')}}
             </div>
             </div>
         </div>
