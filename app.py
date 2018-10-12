@@ -67,7 +67,7 @@ def register():
         # if not is_safe_url(next):
         #     return flask.abort(400)
 
-        return redirect(next or url_for('display_all'))
+        return redirect(next or url_for('display_my'))
     
     else:
         next = request.args.get('next')
